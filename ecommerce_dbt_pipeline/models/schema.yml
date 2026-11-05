@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Master customer dimension with behavioral segmentation"
+    columns:
+      - name: customer_sk
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: fct_daily_sales
+    description: "Daily aggregated sales and operational performance metrics"
+    columns:
+      - name: sales_date
+        tests:
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null
+
+  - name: int_orders
+    description: "Deduplicated Silver incremental orders table"
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
